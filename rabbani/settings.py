@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://crm-enterprise-rjfe.onrender.com',
+    'https://*.onrender.com',
+]
+
+
 
 # Application definition
 
