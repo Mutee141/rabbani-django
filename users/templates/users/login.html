@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}CRM & ERP Portal{% endblock %}</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -272,16 +274,19 @@
             gap: 10px;
             text-align: left;
         }
+
         .messages.error {
             background: rgba(255, 87, 87, 0.15);
             color: #ff5757;
             border-left: 4px solid #ff5757;
         }
+
         .messages.success {
             background: rgba(38, 208, 124, 0.15);
             color: #26d07c;
             border-left: 4px solid #26d07c;
         }
+
         .messages.warning {
             background: rgba(255, 174, 0, 0.15);
             color: #ffae00;
@@ -289,6 +294,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="login-wrapper">
         <div class="login-card">
@@ -299,29 +305,30 @@
 
             <!-- Messages -->
             {% if messages %}
-                {% for message in messages %}
-                    <div class="messages {% if message.tags %}{{ message.tags }}{% endif %}">
-                        {% if 'error' in message.tags %}
-                            <i class="fas fa-exclamation-circle"></i>
-                        {% elif 'success' in message.tags %}
-                            <i class="fas fa-check-circle"></i>
-                        {% else %}
-                            <i class="fas fa-info-circle"></i>
-                        {% endif %}
-                        <span>{{ message }}</span>
-                    </div>
-                {% endfor %}
+            {% for message in messages %}
+            <div class="messages {% if message.tags %}{{ message.tags }}{% endif %}">
+                {% if 'error' in message.tags %}
+                <i class="fas fa-exclamation-circle"></i>
+                {% elif 'success' in message.tags %}
+                <i class="fas fa-check-circle"></i>
+                {% else %}
+                <i class="fas fa-info-circle"></i>
+                {% endif %}
+                <span>{{ message }}</span>
+            </div>
+            {% endfor %}
             {% endif %}
 
             <!-- Form -->
             <form method="POST" action="">
                 {% csrf_token %}
-                
+
                 <div class="form-group">
                     <label for="username">USERNAME</label>
                     <div class="input-wrapper">
                         <i class="fas fa-user field-icon"></i>
-                        <input type="text" id="username" name="username" placeholder="Your username" required autocomplete="username">
+                        <input type="text" id="username" name="username" placeholder="Your username" required
+                            autocomplete="username">
                     </div>
                 </div>
 
@@ -329,7 +336,8 @@
                     <label for="password">PASSWORD</label>
                     <div class="input-wrapper">
                         <i class="fas fa-lock field-icon"></i>
-                        <input type="password" id="password" name="password" placeholder="Your password" required autocomplete="current-password">
+                        <input type="password" id="password" name="password" placeholder="Your password" required
+                            autocomplete="current-password">
                         <i class="fas fa-eye toggle-password" id="togglePassword"></i>
                     </div>
                 </div>
@@ -351,7 +359,7 @@
                 </div>
             </form>
         </div>
-        
+
         <div class="copyright">
             &copy; 2026 Rabbani - Secure CRM & ERP Solution
         </div>
@@ -373,7 +381,7 @@
         const rememberCheckbox = document.getElementById('remember');
         const usernameInput = document.getElementById('username');
 
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const savedUsername = sessionStorage.getItem('rememberedUsername');
             if (savedUsername) {
                 usernameInput.value = savedUsername;
@@ -381,7 +389,7 @@
             }
         });
 
-        rememberCheckbox.addEventListener('change', function() {
+        rememberCheckbox.addEventListener('change', function () {
             if (this.checked) {
                 sessionStorage.setItem('rememberedUsername', usernameInput.value);
             } else {
@@ -389,7 +397,7 @@
             }
         });
 
-        usernameInput.addEventListener('input', function() {
+        usernameInput.addEventListener('input', function () {
             if (rememberCheckbox.checked) {
                 sessionStorage.setItem('rememberedUsername', this.value);
             }
@@ -405,4 +413,5 @@
         });
     </script>
 </body>
+
 </html>
